@@ -104,6 +104,26 @@ write notice message in your action, will generate bootstrap style notice messag
 
 see [example](bootstrap_helper/tree/master/example/application.html.erb)
 
+## Other
+
+### Form
+
+You can use simple_form 2.0 with bootstrap form template
+
+* Gemfile
+
+```
+gem "simple_form", :git => "git://github.com/plataformatec/simple_form.git"
+```
+
+place <https://github.com/rafaelfranca/simple_form-bootstrap/blob/master/config/initializers/simple_form.rb> to `config/initailizers/simple_form.rb`
+
+```
+<%= simple_form_for @article, :wrapper => :inline do |f| %>
+   <%= f.input :title, :input_html => {:class => "xxlarge"} , :hint => "this is post title" %>
+<% end >
+```
+
 ## Thanks
 
 Thanks Twitter for Bootstrap <http://twitter.github.com/bootstrap>
