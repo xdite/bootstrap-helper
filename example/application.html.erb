@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= render_page_title %>
+  <%= csrf_meta_tag %>
+  <%= stylesheet_link_tag "application"%>
+</head>
+<%= render_body_tag %>
+  <div class="topbar" data-dropdown="dropdown">
+    <div class="topbar-inner">
+      <div class="container">
+        <h3>
+          <a href="/"><%= Setting.app_name %></a>
+        </h3>
+         <%= render_list :class => "nav" do |li|
+           li << link_to(t("menu.topics"), topics_path)
+           li << link_to(t("menu.wiki"), wikis_path )
+           li << link_to(t("menu.sites"), sites_path )
+           li << link_to(t("menu.users"), users_path)
+         end %>
+        <%= render "common/search_form" %>
+        <%= render "common/user_navigation" %>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <%= render_breadcrumb %>
+    <div id="main" class="container-fluid">
+      <%= notice_message %>
+      <%= yield %>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <%= render :partial => "common/footer" %>
+    </div>
+  </footer>
+  
+  <%= javascript_include_tag "application" %>
+  
+  <%= yield :page_specific_javascripts %>
+    
+  <%= render :partial => "common/facebook_js" %>
+  <%= render :partial => "common/google_analytics"%>
+ 
+</body>
+</html>
