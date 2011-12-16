@@ -99,6 +99,14 @@ write notice message in your action, will generate bootstrap style notice messag
       # ….
       redirect_to posts_path, :notice => "Create Success!"
     end
+
+### Pagination
+
+Support `will_paginate`, `3.0.pre4`
+
+in `config/application.rb`
+
+    WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapHelper::PaginateRenderer'
       
 ## Example 
 
