@@ -28,7 +28,6 @@ module BootstrapHelper
 
       def drop_page_title(title)
         @page_title = title
-        return @page_title
       end
 
       def no_breadcrumbs
