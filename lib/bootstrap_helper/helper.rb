@@ -3,7 +3,7 @@ module BootstrapHelper
   
   module Helper
     def yield_or_default(message, default_message = "")
-      message.nil? ? default_message : message
+      message || default_message
     end
 
 
