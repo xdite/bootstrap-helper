@@ -3,7 +3,7 @@ module BootstrapHelper
   
   module Helper
     def yield_or_default(message, default_message = "")
-      message.nil? ? default_message : message
+      message || default_message
     end
 
 
@@ -27,19 +27,17 @@ module BootstrapHelper
     end
     
     def notice_message
-      flash_messages = []
-
-      flash.each do |type, message|
+      flash.map do |type, msg|
         type = :success if type == :notice
-        text = content_tag(:div, link_to("x", "#", :class => "close") + content_tag(:p,message), :class => "alert-message #{type}", "data-alert" => "alert")
-        flash_messages << text if message
-      end
-
-      flash_messages.join("\n").html_safe
+        
+        if message
+          content_tag :div, link_to('x', '#', :class => :close) + content_tag(:p, msg), :class => ['alert-message', type], 'data-alert' => 'alert'
+        end
+      end.join("\n").html_safe
     end
 
     def s(html)
-      sanitize( html, :tags => %w(table thead tbody tr td th ol ul li div span font img sup sub br hr a pre p h1 h2 h3 h4 h5 h6), :attributes => %w(id class style src href size color) )
+      sanitize html, :tags => %w(table thead tbody tr td th ol ul li div span font img sup sub br hr a pre p h1 h2 h3 h4 h5 h6), :attributes => %w(id class style src href size color)
     end
 
     def render_table(rows, renderrers, table_options = {})
