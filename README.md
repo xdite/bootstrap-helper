@@ -14,7 +14,7 @@ gem 'bootstrap_helper'
 or you can install from latest build;
 
 ``` ruby
-gem 'bootstrap_helper', :git => "git://github.com/xdite/bootstrap_helper.git"
+gem 'bootstrap_helper', :git => "git://github.com/xdite/bootstrap-helper.git"
 ```
 
 ## USAGE
