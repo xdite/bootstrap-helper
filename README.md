@@ -127,7 +127,7 @@ gem "simple_form", :git => "git://github.com/plataformatec/simple_form.git"
 place <https://github.com/rafaelfranca/simple_form-bootstrap/blob/master/config/initializers/simple_form.rb> to `config/initailizers/simple_form.rb`
 
 ```
-<%= simple_form_for @article, :wrapper => :inline do |f| %>
+<%= simple_form_for @article do |f| %>
    <%= f.input :title, :input_html => {:class => "xxlarge"} , :hint => "this is post title" %>
 <% end >
 ```
