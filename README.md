@@ -110,7 +110,7 @@ in `config/application.rb`
       
 ## Example 
 
-see [example](bootstrap_helper/tree/master/example/application.html.erb)
+see [example](bootstrap-helper/tree/master/example/application.html.erb)
 
 ## Other
 
