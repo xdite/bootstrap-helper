@@ -26,7 +26,7 @@ gem 'bootstrap_helper', :git => "git://github.com/xdite/bootstrap-helper.git"
 
 edit your `config/application.rb `
 
-	SITENAME = "YOUR SITE NAME"
+	SITE_NAME = "YOUR SITE NAME"
 
 in  `application.html.erb`, replace `<title>` with 
 
@@ -111,7 +111,7 @@ copy `will_paginate.rb` to `config/initializers`
       
 ## Example 
 
-see [example](bootstrap_helper/tree/master/example/application.html.erb)
+see [example](bootstrap-helper/tree/master/example/application.html.erb)
 
 ## Other
 
