@@ -102,11 +102,12 @@ write notice message in your action, will generate bootstrap style notice messag
 
 ### Pagination
 
-Support `will_paginate`, `3.0.pre4`
+Support `will_paginate`, `3.0.3`
 
-in `config/application.rb`
+copy `will_paginate.rb` to `config/initializers`
 
-    WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapHelper::PaginateRenderer'
+<https://gist.github.com/2760885>
+
       
 ## Example 
 
