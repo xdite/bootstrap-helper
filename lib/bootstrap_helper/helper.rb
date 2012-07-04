@@ -27,7 +27,7 @@ module BootstrapHelper
     end
     
     
-   def notice_message
+    def notice_message
       flash_messages = []
       flash.each do |type, message|
         type = :success if type == :notice
@@ -36,6 +36,7 @@ module BootstrapHelper
       end
       flash_messages.join("\n").html_safe
     end
+
 
     def s(html)
       sanitize( html, :tags => %w(table thead tbody tr td th ol ul li div span font img sup sub br hr a pre p h1 h2 h3 h4 h5 h6), :attributes => %w(id class style src href size color) )
