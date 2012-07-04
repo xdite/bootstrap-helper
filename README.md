@@ -99,17 +99,21 @@ write notice message in your action, will generate bootstrap style notice messag
       # ….
       redirect_to posts_path, :notice => "Create Success!"
     end
+	
+	def update
+	  redirect_to root_path, :flash => { :warning => "Update Success!" }
+	end
+	def no_permission
+	  redirect_to root_path, :flash => { :error => "no permission" }
+	end
+	
+	
 
 ### Pagination
 
-Support `will_paginate`, `3.0.3`
-
-copy `will_paginate.rb` to `config/initializers`
-
-<https://gist.github.com/2760885>
-
-      
-## Example 
+Support `will_paginate`, `~> 3.0.3`
+     
+## Markup Example 
 
 see [example](bootstrap-helper/tree/master/example/application.html.erb)
 
@@ -117,15 +121,9 @@ see [example](bootstrap-helper/tree/master/example/application.html.erb)
 
 ### Form
 
+Support `simple_form`, `~> 2.0.2`
+
 You can use simple_form 2.0 with bootstrap form template
-
-* Gemfile
-
-```
-gem "simple_form", :git => "git://github.com/plataformatec/simple_form.git"
-```
-
-place <https://github.com/rafaelfranca/simple_form-bootstrap/blob/master/config/initializers/simple_form.rb> to `config/initailizers/simple_form.rb`
 
 ```
 <%= simple_form_for @article do |f| %>
