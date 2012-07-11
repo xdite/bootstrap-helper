@@ -147,7 +147,7 @@ module BootstrapHelper
     end
     
     def btn(text, path, type = '', options={})
-      css = options.delete(:class) || options.delete('class')
+      css = (options.delete(:class) || options.delete('class')).to_s
       link_to text, path, {class: 'btn ' + type + ' ' + css}.merge(options)
     end
 
