@@ -20,9 +20,11 @@ module BootstrapHelper
 
       def drop_breadcrumb(title=nil, url=nil)
         title ||= @page_title
-        url ||= url_for
-        if title
+        
+        if title && url
           @breadcrumbs.push("<a href=\"#{url}\">#{title}</a>".html_safe)
+        elsif title
+          @breadcrumbs.push("#{title}".html_safe)
         end
       end
 
