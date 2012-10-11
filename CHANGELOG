@@ -1,2 +1,4 @@
+* 2.1.2 fix breadcurm should be plaintext item
+* 2.1.1 fix simple_form decrappted warning
 * 2.1.0 add will_paginate & simple_form template initializer for bootstrap
 * 2.0.0.3 fix notice_mesage
