@@ -72,35 +72,69 @@ describe BootstrapHelper::Helper do
 
   end
 
+  describe "s" do
+
+   let(:tags) { %w(table thead tbody tr td th ol ul li div span font img sup sub br hr a pre p h1 h2 h3 h4 h5 h6)} 
+   let(:poison_string) {"javascript: alert('hello');"}
+   
+
+   def sanitize_tags(tags,attributes)
+     tags.each do |tag|
+         attributes.each do |attribute|
+           html_tag = content_tag(tag, "", attribute.to_sym => poison_string )
+           s(html_tag).should == content_tag(tag, "")
+         end       
+     end
+   end
+
+    it "should sanitize javascripts hiddln in tags using href src" do
+      attributes = %w(href src)
+      sanitize_tags(tags,attributes)
+    end
+
+
+    it "should sanitize javascripts hiddlen in tags using style" do
+      attributes = %w(style)
+      tags.each do |tag|
+        attributes.each do |attribute|
+          html_tag = content_tag(tag, "", attribute.to_sym => poison_string )
+          s(html_tag).should == content_tag(tag, "", attribute => "")
+        end       
+      end
+    end
+
+  end
+
   describe "render_list" do
     before do
       self.stub!("current_page?").and_return(true)
-
-      def render_some_list(options={})
-          list = render_list options do |li|
-          li << link_to("Link 1", "#")
-          li << link_to("Link 2", "#")
-          li << link_to("Link 3", "#")
-        end
-      end
-
     end
 
+    def render_some_list(options={})
+      list = render_list options do |li|
+        li << link_to("Link 1", "#")
+        li << link_to("Link 2", "#")
+        li << link_to("Link 3", "#")
+      end
+     end
+
+
     it "should return ul & li" do
-      list = render_render_some_list
+      list = render_some_list
       list.should == "<ul><li class=\"first active\"><a href=\"#\">Link 1</a></li><li class=\"active\"><a href=\"#\">Link 2</a></li><li class=\"last active\"><a href=\"#\">Link 3</a></li></ul>"
     end
 
     it "should return ul with class_name" do
       options = { :class => "foo" }
-      list = render_render_some_list(options)
+      list = render_some_list(options)
       list.should == "<ul class=\"foo\"><li class=\"first active\"><a href=\"#\">Link 1</a></li><li class=\"active\"><a href=\"#\">Link 2</a></li><li class=\"last active\"><a href=\"#\">Link 3</a></li></ul>"
     end
 
     it "should return ul with id_name" do
       options = { :id => "bar" }
-      list = render_render_some_list(options)
+      list = render_some_list(options)
       list.should == "<ul id=\"bar\"><li class=\"first active\"><a href=\"#\">Link 1</a></li><li class=\"active\"><a href=\"#\">Link 2</a></li><li class=\"last active\"><a href=\"#\">Link 3</a></li></ul>"
     end
   end
+
 end
