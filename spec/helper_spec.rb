@@ -29,11 +29,13 @@ describe BootstrapHelper::Helper do
 
   describe "render_body_tag" do
 
+    before do 
+      stub!(:controller_name).and_return('pages')
+      stub!(:action_name).and_return('welcome')
+    end
 
     it "render_body_tag with controller_name and action_name" do
 
-      stub!(:controller_name).and_return('pages')
-      stub!(:action_name).and_return('welcome')
       render_body_tag.should == raw(%Q|<!--[if lt IE 7 ]>
 <body class="pages-controller welcome-action ie6"><![endif]-->
 <!--[if gte IE 7 ]>
@@ -43,6 +45,17 @@ describe BootstrapHelper::Helper do
 <!--<![endif]-->|)
     end
     
+    it "render_body_tag with controller_name and action_name" do
+
+      @body_id = "foo"
+      render_body_tag.should == raw(%Q|<!--[if lt IE 7 ]>
+<body class="pages-controller welcome-action ie6"><![endif]-->
+<!--[if gte IE 7 ]>
+<body class="pages-controller welcome-action ie"><![endif]-->
+<!--[if !IE]>-->
+<body id="foo-page" class="pages-controller welcome-action">
+<!--<![endif]-->|)
+    end
   end
 
   describe "notice_message" do
