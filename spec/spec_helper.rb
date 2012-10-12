@@ -4,8 +4,8 @@ require 'bundler/setup'
 require 'bootstrap_helper'
 
 include BootstrapHelper::Helper
-include ActionView::Helpers::TagHelper
-include ActionView::Helpers::OutputSafetyHelper
+include ActionView::Helpers
+
 
 RSpec.configure do |config|
 end

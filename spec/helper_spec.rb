@@ -59,7 +59,18 @@ describe BootstrapHelper::Helper do
   end
 
   describe "notice_message" do
-    pending
+
+
+    it "should return flash message" do
+      stub!(:flash).and_return({:warning => "Update Success!"})
+      notice_message.should == "<div class=\"alert fade in alert-warning\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\">x</a>Update Success!</div>"
+    end
+
+    it "should return alert-success message when use notice message" do
+      stub!(:flash).and_return({:notice => "Update Success!"})
+      notice_message.should == "<div class=\"alert fade in alert-success\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\">x</a>Update Success!</div>"
+    end
+
   end
 
   describe "render_list" do
