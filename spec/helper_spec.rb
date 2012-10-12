@@ -9,7 +9,6 @@ describe BootstrapHelper::Helper do
     it "should return default message" do
       yield_or_default(nil).should == ""
     end
-
   end
 
   describe "render_page_title" do
@@ -29,7 +28,21 @@ describe BootstrapHelper::Helper do
   end
 
   describe "render_body_tag" do
-    pending
+
+
+    it "render_body_tag with controller_name and action_name" do
+
+      stub!(:controller_name).and_return('pages')
+      stub!(:action_name).and_return('welcome')
+      render_body_tag.should == raw(%Q|<!--[if lt IE 7 ]>
+<body class="pages-controller welcome-action ie6"><![endif]-->
+<!--[if gte IE 7 ]>
+<body class="pages-controller welcome-action ie"><![endif]-->
+<!--[if !IE]>-->
+<body class="pages-controller welcome-action">
+<!--<![endif]-->|)
+    end
+    
   end
 
   describe "notice_message" do
