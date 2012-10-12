@@ -13,7 +13,19 @@ describe BootstrapHelper::Helper do
   end
 
   describe "render_page_title" do
-    pending
+    it "should return 'SITENAME' when @page_title and SITE_NAME not given" do
+      render_page_title.should == "<title>SITE_NAME</title>"
+    end
+
+    it "should return 'SITENAME' when @page_title not given" do
+      SITE_NAME = "Foo"
+      render_page_title.should == "<title>Foo</title>"
+    end
+
+    it "should return @page_title when @page_title is given" do
+      @page_title = "Bar"
+      render_page_title.should == "<title>Foo | Bar</title>"
+    end
   end
 
   describe "render_body_tag" do
