@@ -39,7 +39,7 @@ module BootstrapHelper
 
 
     def s(html)
-      sanitize( html, :tags => %w(table thead tbody tr td th ol ul li div span font img sup sub br hr a pre p h1 h2 h3 h4 h5 h6), :attributes => %w(id class style src href size color) )
+      sanitize( html, :tags => %w(table thead tbody tr td th ol ul li div span font img sup sub br hr a pre p h1 h2 h3 h4 h5 h6), :attributes => %w(style src href size color) )
     end
 
     def render_table(rows, renderrers, table_options = {})

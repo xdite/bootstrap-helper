@@ -1,5 +1,6 @@
 require "bootstrap_helper/helper"
 require "bootstrap_helper/breadcrumb"
+
 module BootstrapHelper
   module Rails
     class Engine < ::Rails::Engine

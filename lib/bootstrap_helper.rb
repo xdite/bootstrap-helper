@@ -1,4 +1,6 @@
+require "rails"
 require "bootstrap_helper/version"
+require "action_view"
 
 module BootstrapHelper
   module Rails
