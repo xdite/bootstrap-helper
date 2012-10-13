@@ -1,6 +1,7 @@
 require 'spec_helper'
 
-describe BootstrapHelper::Helper do
+describe ApplicationHelper do
+
   describe "yield_or_default" do
     it "should return yield_name" do
       yield_or_default(:xxx).should == :xxx
@@ -27,36 +28,6 @@ describe BootstrapHelper::Helper do
     end
   end
 
-  describe "render_body_tag" do
-
-    before do 
-      stub!(:controller_name).and_return('pages')
-      stub!(:action_name).and_return('welcome')
-    end
-
-    it "render_body_tag with controller_name and action_name" do
-
-      render_body_tag.should == raw(%Q|<!--[if lt IE 7 ]>
-<body class="pages-controller welcome-action ie6"><![endif]-->
-<!--[if gte IE 7 ]>
-<body class="pages-controller welcome-action ie"><![endif]-->
-<!--[if !IE]>-->
-<body class="pages-controller welcome-action">
-<!--<![endif]-->|)
-    end
-    
-    it "render_body_tag with controller_name and action_name" do
-
-      @body_id = "foo"
-      render_body_tag.should == raw(%Q|<!--[if lt IE 7 ]>
-<body class="pages-controller welcome-action ie6"><![endif]-->
-<!--[if gte IE 7 ]>
-<body class="pages-controller welcome-action ie"><![endif]-->
-<!--[if !IE]>-->
-<body id="foo-page" class="pages-controller welcome-action">
-<!--<![endif]-->|)
-    end
-  end
 
   describe "notice_message" do
 
@@ -74,18 +45,18 @@ describe BootstrapHelper::Helper do
 
   describe "s" do
 
-   let(:tags) { %w(table thead tbody tr td th ol ul li div span font img sup sub br hr a pre p h1 h2 h3 h4 h5 h6)} 
-   let(:poison_string) {"javascript: alert('hello');"}
-   
+    let(:tags) { %w(table thead tbody tr td th ol ul li div span font img sup sub br hr a pre p h1 h2 h3 h4 h5 h6)}
+    let(:poison_string) {"javascript: alert('hello');"}
 
-   def sanitize_tags(tags,attributes)
-     tags.each do |tag|
-         attributes.each do |attribute|
-           html_tag = content_tag(tag, "", attribute.to_sym => poison_string )
-           s(html_tag).should == content_tag(tag, "")
-         end       
-     end
-   end
+
+    def sanitize_tags(tags,attributes)
+      tags.each do |tag|
+        attributes.each do |attribute|
+          html_tag = content_tag(tag, "", attribute.to_sym => poison_string )
+          s(html_tag).should == content_tag(tag, "")
+        end
+      end
+    end
 
     it "should sanitize javascripts hiddln in tags using href src" do
       attributes = %w(href src)
@@ -99,7 +70,7 @@ describe BootstrapHelper::Helper do
         attributes.each do |attribute|
           html_tag = content_tag(tag, "", attribute.to_sym => poison_string )
           s(html_tag).should == content_tag(tag, "", attribute => "")
-        end       
+        end
       end
     end
 
@@ -116,7 +87,7 @@ describe BootstrapHelper::Helper do
         li << link_to("Link 2", "#")
         li << link_to("Link 3", "#")
       end
-     end
+    end
 
 
     it "should return ul & li" do
@@ -136,5 +107,4 @@ describe BootstrapHelper::Helper do
       list.should == "<ul id=\"bar\"><li class=\"first active\"><a href=\"#\">Link 1</a></li><li class=\"active\"><a href=\"#\">Link 2</a></li><li class=\"last active\"><a href=\"#\">Link 3</a></li></ul>"
     end
   end
-
 end
