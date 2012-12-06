@@ -35,12 +35,12 @@ in  `application.html.erb`, replace `<title>` with
 define page title in your action 
 
 	def index
-  	  page_title("Posts Index")
+  	  @page_title = "Posts Index"
 	end
 
 will render 
 	
-	<title>Posts Index &raquo; YOUR SITE NAME</title>
+	<title>Posts Index | YOUR SITE NAME</title>
 
 ### render_list
 
