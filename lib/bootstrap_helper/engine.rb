@@ -10,7 +10,7 @@ module BootstrapHelper
       end
 
       config.to_prepare do
-        ApplicationController.send :include, BootstrapHelper::Breadcrumb
+        ActionController::Base.send :include, BootstrapHelper::Breadcrumb
       end
 
     end
