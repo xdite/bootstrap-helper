@@ -53,10 +53,10 @@ module BootstrapHelper
           if i == (@breadcrumbs.length - 1)
             breadcrumb_content = c
           else
-            breadcrumb_content = c + content_tag(:span, "/", :class => "divider")
+            breadcrumb_content = c + " " + content_tag(:span, "/", :class => "divider")
           end
 
-          crumb += content_tag(:li, breadcrumb_content ,:class => breadcrumb_class )
+          crumb += content_tag(:li, breadcrumb_content ,:class => breadcrumb_class ) + "\n"
         end
         return prefix + content_tag(:ul, crumb, :class => "breadcrumb menu clearfix")
       end
