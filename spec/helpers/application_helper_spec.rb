@@ -33,12 +33,12 @@ describe ApplicationHelper do
 
     it "should return flash message" do
       stub!(:flash).and_return({:warning => "Update Success!"})
-      notice_message.should == "<div class=\"alert fade in alert-warning\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\">x</a>Update Success!</div>"
+      notice_message.should == "<div class=\"alert fade in alert-warning\"><a class=\"close\" data-dismiss=\"alert\" href=\"#\">x</a>Update Success!</div>"
     end
 
     it "should return alert-success message when use notice message" do
       stub!(:flash).and_return({:notice => "Update Success!"})
-      notice_message.should == "<div class=\"alert fade in alert-success\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\">x</a>Update Success!</div>"
+      notice_message.should ==  "<div class=\"alert fade in alert-success\"><a class=\"close\" data-dismiss=\"alert\" href=\"#\">x</a>Update Success!</div>"
     end
 
   end
