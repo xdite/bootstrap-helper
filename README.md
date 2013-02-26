@@ -4,18 +4,25 @@ Bootstrap is a toolkit from Twitter designed to kickstart development of webapps
 
 bootstrap_helper auto generates Bootstrap HTML codes.
 
-## Rails 3.1
+
+## Rails 4.0+
+
+``` ruby
+gem "bootstrap_helper","2.1.2.2.beta"
+
+```
+
+## Rails 3.1+
 
 include Bootstrap Helper in Gemfile;
 
 ``` ruby
 gem 'bootstrap_helper'
 ```
-or you can install from latest build;
 
-``` ruby
-gem 'bootstrap_helper', :git => "git://github.com/xdite/bootstrap-helper.git"
-```
+
+
+
 
 ## USAGE
 
@@ -121,7 +128,7 @@ see [example](bootstrap-helper/tree/master/example/application.html.erb)
 
 ### Form
 
-Support `simple_form`, `~> 2.0.2`
+Support `simple_form`, `~> 3.0.0.beta1`
 
 You can use simple_form 2.0 with bootstrap form template
 

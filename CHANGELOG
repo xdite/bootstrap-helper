@@ -1,3 +1,4 @@
+* 2.1.2.2.beta, support Rails 4.0+
 * 2.1.2.1 add if defined?(SimpleForm)
 * 2.1.2 fix breadcurm should be plaintext item
 * 2.1.1 fix simple_form decrappted warning
