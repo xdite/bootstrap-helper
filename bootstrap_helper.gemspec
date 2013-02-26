@@ -15,14 +15,13 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = BootstrapHelper::Rails::VERSION
 
-  gem.add_dependency "railties", "~> 3.0"
+  gem.add_dependency "railties", "4.0.0.beta1"
   gem.add_dependency "thor",     "~> 0.14"
-  gem.add_dependency "simple_form", "~> 2.0.2"
   gem.add_dependency "will_paginate", '>= 3.0.3'
   gem.add_development_dependency("rspec-rails")
   gem.add_development_dependency("capybara", ">= 0.4.0")
   gem.add_development_dependency("sqlite3")
-  gem.add_development_dependency "bundler", ">= 1.0.0"
-  gem.add_development_dependency "rails",   "~> 3.0"
+  gem.add_development_dependency "bundler", ">= 1.3.0"
+  gem.add_development_dependency "rails",   "4.0.0.beta1"
 end
 
