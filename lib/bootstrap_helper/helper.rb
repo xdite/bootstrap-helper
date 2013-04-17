@@ -92,7 +92,7 @@ module BootstrapHelper
         end
       end
 
-      if rows.length <= 0
+      if rows.length <= 0 && table_options[:blank_message] != false
         tbody << tr = TagNode.new('tr', :class => "no-record" )
         tr << td = TagNode.new('td', :colspan => renderrers.length)
         td << table_options[:blank_message]
