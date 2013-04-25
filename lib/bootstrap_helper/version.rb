@@ -1,5 +1,5 @@
 module BootstrapHelper
   module Rails
-    VERSION = "2.1.2.2.beta"
+    VERSION = "2.2.1.beta"
   end
 end

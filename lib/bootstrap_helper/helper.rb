@@ -1,6 +1,6 @@
 # coding: utf-8
 module BootstrapHelper
-  
+
   module Helper
     def yield_or_default(message, default_message = "")
       message.nil? ? default_message : message
@@ -25,8 +25,8 @@ module BootstrapHelper
 <!--<![endif]-->|)
 
     end
-    
-    
+
+
     def notice_message
       flash_messages = []
       flash.each do |type, message|
@@ -48,18 +48,19 @@ module BootstrapHelper
         :has_row_info => false,
         :caption => "",
         :id => nil,
-        :class_name => "auto"
+        :class_name => "auto",
+        :blank_message => "No results available."
       }.merge(table_options)
 
       table_tag_options = table_options[:id] ? { :id => table_options[:id], :class => table_options[:class_name] } : { :class => table_options[:class_name] }
 
       table = TagNode.new('table', table_tag_options)
-      
+
       if !table_options[:caption].blank?
         table << caption = TagNode.new(:caption)
         caption << table_options[:caption]
       end
-      
+
       if table_options[:has_header] == true
         table << thead = TagNode.new(:thead)
         thead << tr = TagNode.new(:tr, :class => 'odd')
@@ -91,6 +92,12 @@ module BootstrapHelper
         end
       end
 
+      if rows.length <= 0 && table_options[:blank_message] != false
+        tbody << tr = TagNode.new('tr', :class => "no-record" )
+        tr << td = TagNode.new('td', :colspan => renderrers.length)
+        td << table_options[:blank_message]
+      end
+
       return table.to_s
     end
 
@@ -103,10 +110,10 @@ module BootstrapHelper
       end
 
       yield(list) if block_given?
-      
+
       list_type ||= "ul"
-      
-      if options[:type] 
+
+      if options[:type]
         if ["ul", "dl", "ol"].include?(options[:type])
           list_type = options[:type]
         end
