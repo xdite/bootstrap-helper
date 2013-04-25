@@ -8,7 +8,7 @@ bootstrap_helper auto generates Bootstrap HTML codes.
 ## Rails 4.0+
 
 ``` ruby
-gem "bootstrap_helper","2.1.2.2.beta"
+gem "bootstrap_helper","2.2.1.beta"
 
 ```
 
