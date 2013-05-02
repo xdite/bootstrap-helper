@@ -17,7 +17,7 @@ gem 'bootstrap_helper', '3.2.2.0'
 or you can install from latest build;
 
 ``` ruby
-gem 'bootstrap_helper', '4.2.2.0'
+gem 'bootstrap_helper', '4.2.2.1'
 ```
 
 ## USAGE
