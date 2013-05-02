@@ -9,12 +9,15 @@ bootstrap_helper auto generates Bootstrap HTML codes.
 include Bootstrap Helper in Gemfile;
 
 ``` ruby
-gem 'bootstrap_helper'
+gem 'bootstrap_helper', '3.2.2.0'
 ```
+
+## Rails 4.0+
+
 or you can install from latest build;
 
 ``` ruby
-gem 'bootstrap_helper', :git => "git://github.com/xdite/bootstrap-helper.git"
+gem 'bootstrap_helper', '4.2.2.0'
 ```
 
 ## USAGE
