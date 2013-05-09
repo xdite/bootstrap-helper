@@ -1,3 +1,5 @@
+* add ibutton feature
+* Releaase 3.2.2.0 & 4.2.2.0
 * 2.1.2.1 add if defined?(SimpleForm)
 * 2.1.2 fix breadcurm should be plaintext item
 * 2.1.1 fix simple_form decrappted warning
