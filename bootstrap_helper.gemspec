@@ -22,6 +22,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency("capybara", ">= 0.4.0")
   gem.add_development_dependency("sqlite3")
   gem.add_development_dependency "bundler", ">= 1.3.0"
-  gem.add_development_dependency "rails",   "4.0.0.rc1"
+  gem.add_development_dependency "rails",   "~> 4.0.0.rc1"
 end
 
