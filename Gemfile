@@ -5,4 +5,4 @@ gemspec
 
 
 
-gem "simple_form", "3.0.0.beta1"
+gem "simple_form", "3.0.0.rc"
