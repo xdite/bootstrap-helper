@@ -106,5 +106,11 @@ describe ApplicationHelper do
       list = render_some_list(options)
       list.should == "<ul id=\"bar\"><li class=\"first active\"><a href=\"#\">Link 1</a></li><li class=\"active\"><a href=\"#\">Link 2</a></li><li class=\"last active\"><a href=\"#\">Link 3</a></li></ul>"
     end
+
+    it "should not add the li classes when autoclass option is false" do
+      options = { :autoclass => false }
+      list = render_some_list(options)
+      list.should == "<ul><li><a href=\"#\">Link 1</a></li><li><a href=\"#\">Link 2</a></li><li><a href=\"#\">Link 3</a></li></ul>"
+    end
   end
 end

@@ -142,8 +142,6 @@ module BootstrapHelper
 
       list.each_with_index do |content, i|
         item_class = []
-        item_class << "first" if i == 0
-        item_class << "last" if i == (list.length - 1)
 
         item_content = content
         item_options = {}
@@ -159,8 +157,13 @@ module BootstrapHelper
 
         link = item_content.match(/href=(["'])(.*?)(\1)/)[2] rescue nil
 
-        if ( link && current_page?(link) ) || ( @current && @current.include?(link) )
-          item_class << "active"
+        unless options[:autoclass] == false
+          item_class << "first" if i == 0
+          item_class << "last" if i == (list.length - 1)
+
+          if ( link && current_page?(link) ) || ( @current && @current.include?(link) )
+            item_class << "active"
+          end
         end
 
         item_class = (item_class.empty?)? nil : item_class.join(" ")
