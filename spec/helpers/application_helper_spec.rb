@@ -41,6 +41,16 @@ describe ApplicationHelper do
       notice_message.should == "<div class=\"alert fade in alert-success\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\">x</a>Update Success!</div>"
     end
 
+    it "should return alert-danger message when use notice message" do
+      stub!(:flash).and_return({:alert => "Update Success!"})
+      notice_message.should == "<div class=\"alert fade in alert-danger\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\">x</a>Update Success!</div>"
+    end
+
+    it "should return alert-danger message when use notice message" do
+      stub!(:flash).and_return({:error => "Update Success!"})
+      notice_message.should == "<div class=\"alert fade in alert-danger\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\">x</a>Update Success!</div>"
+    end
+
   end
 
   describe "s" do
