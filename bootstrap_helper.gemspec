@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = "2.0.0.2"
 
-  gem.add_dependency "railties", "~> 3.0"
+  gem.add_dependency "railties", "~> 4.0"
   gem.add_dependency "thor",     "~> 0.14"
   gem.add_dependency "will_paginate", '~> 3.0.3'
   gem.add_development_dependency "bundler", ">= 1.0.0"
