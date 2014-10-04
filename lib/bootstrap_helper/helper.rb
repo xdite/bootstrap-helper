@@ -159,8 +159,9 @@ module BootstrapHelper
         end
 
         link = item_content.match(/href=(["'])(.*?)(\1)/)[2] rescue nil
+        current = request.fullpath
 
-        if ( link && current_page?(link) ) || ( @current && @current.include?(link) )
+        if ( link && current_page?(link) ) || ( current && current.include?(link) )
           item_class << "active"
         end
 
