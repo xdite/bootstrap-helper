@@ -15,7 +15,7 @@ module BootstrapHelper
       protected
 
       def set_breadcrumbs
-        @breadcrumbs = ["<a href='/'>Home</a>".html_safe]
+        @breadcrumbs = ["<a href='/'>#{t('home', default: 'Home')}</a>".html_safe]
       end
 
       def drop_breadcrumb(title=nil, url=nil)
@@ -50,11 +50,7 @@ module BootstrapHelper
           breadcrumb_class << "first" if i == 0
           breadcrumb_class << "last active" if i == (@breadcrumbs.length - 1)
 
-          if i == (@breadcrumbs.length - 1)
-            breadcrumb_content = c
-          else
-            breadcrumb_content = c + " " + content_tag(:span, "/", :class => "divider")
-          end
+          breadcrumb_content = c
 
           crumb += content_tag(:li, breadcrumb_content ,:class => breadcrumb_class ) + "\n"
         end
