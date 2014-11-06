@@ -1,66 +1,100 @@
-module BootstrapHelper
-  module Breadcrumb
-    def self.included(receiver)
-      receiver.extend         ClassMethods
-      receiver.send :include, InstanceMethods
-      receiver.send :helper, Helpers
-      receiver.send :before_filter, :set_breadcrumbs
-    end
+require 'active_support/concern'
 
-    module ClassMethods
+module Breadcrumb
+  extend ActiveSupport::Concern
 
-    end
+  included do
+    helper Helpers
+    before_filter :init_breadcrumbs
+  end
 
-    module InstanceMethods
-      protected
+  protected
 
-      def set_breadcrumbs
-        @breadcrumbs = ["<a href='/'>Home</a>".html_safe]
-      end
+  def init_breadcrumbs
+    @breadcrumbs = BreadcrumbList.new
+  end
 
-      def drop_breadcrumb(title=nil, url=nil)
-        title ||= @page_title
-        
-        if title && url
-          @breadcrumbs.push("<a href='#{url}'>#{title}</a>".html_safe)
-        elsif title
-          @breadcrumbs.push("#{title}".html_safe)
-        end
-      end
+  def drop_breadcrumb(text, url=nil)
+    @breadcrumbs << BreadcrumbItem.new(text, url)
+  end
 
-      def drop_page_title(title)
-        @page_title = title
-        return @page_title
-      end
+  def no_breadcrumbs
+    @breadcrumbs.reset!
+  end
 
-      def no_breadcrumbs
-        @breadcrumbs = []
-      end
-    end
+  module Helpers
+    def render_breadcrumb
+      return "" if @breadcrumbs.empty?
 
-    module Helpers
+      last_index = @breadcrumbs.length - 1
 
-      def render_breadcrumb
-        return "" if @breadcrumbs.size <= 0
-        prefix = "".html_safe
-        crumb = "".html_safe
+      divider = ' <span class="divider">/</span>'.html_safe
 
-        @breadcrumbs.each_with_index do |c, i|
-          breadcrumb_class = []
-          breadcrumb_class << "first" if i == 0
-          breadcrumb_class << "last active" if i == (@breadcrumbs.length - 1)
+      index = 0
 
-          if i == (@breadcrumbs.length - 1)
-            breadcrumb_content = c
+      content_tag(:ul, :class => "breadcrumb") do
+        @breadcrumbs.map {|breadcrumb|
+          classes = []
+
+          content = ActiveSupport::SafeBuffer.new
+
+          content << (if breadcrumb.url
+                        link_to h(breadcrumb.text), breadcrumb.url
+                      else
+                        h(breadcrumb.text)
+                      end)
+
+          if index == last_index
+            classes << "active"
           else
-            breadcrumb_content = c + " " + content_tag(:span, "/", :class => "divider")
+            content << divider
           end
 
-          crumb += content_tag(:li, breadcrumb_content ,:class => breadcrumb_class ) + "\n"
-        end
-        return prefix + content_tag(:ul, crumb, :class => "breadcrumb menu clearfix")
+          index += 1
+
+          content_tag(:li, content, :class => classes)
+        }.join(" ").html_safe
       end
     end
   end
-  
+
+  class BreadcrumbItem
+    attr_reader :text, :url
+
+    def initialize(text, url=nil)
+      @text = text
+      @url = url
+    end
+  end
+
+  class BreadcrumbList
+    include Enumerable
+
+    def initialize
+      reset!
+
+      @list << BreadcrumbItem.new("<i class='icon-home'></i>".html_safe, "/")
+    end
+
+    def push(item)
+      @list << item
+    end
+    alias :<< :push
+
+    def reset!
+      @list = []
+    end
+
+    def length
+      @list.length
+    end
+
+    def empty?
+      @list.empty?
+    end
+
+    def each(&block)
+      @list.each(&block)
+    end
+  end
 end
