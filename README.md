@@ -47,7 +47,7 @@ will render
 
 ### render_list
 
-render_list generates ul & li, auto append: "first", "last" class . If link matches current controller and acttion, it will auto add "active" class. Perfact for "menu"
+render_list generates ul & li, auto append: "first", "last" class . If link matches current controller and action, it will auto add "active" class. Perfact for "menu"
 
 	<%= render_list :class => "nav" do |li|
          li << link_to(t("menu.topics"), topics_path)
