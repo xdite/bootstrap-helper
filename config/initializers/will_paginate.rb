@@ -1,4 +1,7 @@
 # -*- encoding : utf-8 -*-
+require 'will_paginate/view_helpers/link_renderer'
+require 'will_paginate/view_helpers/action_view'
+
 if defined?(WillPaginate)
   module WillPaginate
     module ActionView
