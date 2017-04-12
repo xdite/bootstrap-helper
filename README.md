@@ -1,6 +1,8 @@
 # Twitter Bootstrap Helper for Rails 3
 
-Bootstrap is a toolkit from Twitter designed to kickstart development of webapps and sites. It includes base CSS and HTML for typography, forms, buttons, tables, grids, navigation, and more.
+Bootstrap is a toolkit from Twitter designed to kickstart development
+of webapps and sites. It includes base CSS and HTML for typography,
+forms, buttons, tables, grids, navigation, and more.
 
 bootstrap_helper auto generates Bootstrap HTML codes.
 
@@ -31,23 +33,26 @@ edit your `config/application.rb `
 
 	SITE_NAME = "YOUR SITE NAME"
 
-in  `application.html.erb`, replace `<title>` with 
+in  `application.html.erb`, replace `<title>` with
 
-	<%= render_page_title %> 
+	<%= render_page_title %>
 
-define page title in your action 
+define page title in your action
 
 	def index
   	  @page_title = "Posts Index"
 	end
 
-will render 
-	
+will render
+
 	<title>Posts Index | YOUR SITE NAME</title>
 
 ### render_list
 
-render_list generates ul & li, auto append: "first", "last" class . If link matches current controller and acttion, it will auto add "active" class. Perfact for "menu"
+render_list generates ul & li, auto append: "first", "last" class . If
+link matches current controller and acttion, it will auto add "active"
+class. Perfect for "menu". You can disable this behavior with option
+`:autoclass => false`.
 
 	<%= render_list :class => "nav" do |li|
          li << link_to(t("menu.topics"), topics_path)
@@ -58,11 +63,12 @@ render_list generates ul & li, auto append: "first", "last" class . If link matc
 
 ### render_body_tag
 
-in  `application.html.erb`, replace `<body>` with 
+in  `application.html.erb`, replace `<body>` with
 
-	<%= render_body_tag %> 
+	<%= render_body_tag %>
 
-render_body_tag auto inserts "controller name" & "action name" in to body class, and generates IE conditional comment.
+render_body_tag auto inserts "controller name" & "action name" in to
+body class, and generates IE conditional comment.
 
 	<!--[if lt IE 7 ]>
 	<body class="topics-controller index-action ie6"><![endif]-->
@@ -78,7 +84,7 @@ in  `application.html.erb`, place this helper
 
 	<%= render_breadcrumb %>
 
-drop breadcrumb in your action 
+drop breadcrumb in your action
 
 	def show
 	  @post = Posts.find(params[:id])
@@ -102,21 +108,21 @@ write notice message in your action, will generate bootstrap style notice messag
       # ….
       redirect_to posts_path, :notice => "Create Success!"
     end
-	
+
 	def update
 	  redirect_to root_path, :flash => { :warning => "Update Success!" }
 	end
 	def no_permission
 	  redirect_to root_path, :flash => { :error => "no permission" }
 	end
-	
-	
+
+
 
 ### Pagination
 
 Support `will_paginate`, `~> 3.0.3`
-     
-## Markup Example 
+
+## Markup Example
 
 see [example](bootstrap-helper/tree/master/example/application.html.erb)
 
@@ -138,14 +144,27 @@ You can use simple_form 2.0 with bootstrap form template
 
 Thanks Twitter for Bootstrap <http://twitter.github.com/bootstrap>
 
-Thanks Handlino for HandicraftHelper  <https://github.com/handlino/handicraft_helper>
+Thanks Handlino for HandicraftHelper <https://github.com/handlino/handicraft_helper>
 
 ## License
 
 Copyright (C) 2011 by xdite
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
